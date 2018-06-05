@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.space.sbsecurity.mapper.sys.SysPermissionMapper" >
+
+    <resultMap id="permissionResult" type="com.space.sbsecurity.bo.sys.SysPermission">
+        <id property="id" column="permission_id" jdbcType="BIGINT"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="description" column="description" jdbcType="VARCHAR"/>
+        <result property="url" column="url" jdbcType="VARCHAR"/>
+        <result property="pid" column="pid" jdbcType="BIGINT"/>
+        <result property="method" column="method" jdbcType="BIGINT"/>
+    </resultMap>
+
+    <select id="selectPermissionByRoleId" resultMap="permissionResult">
+        SELECT
+            permission.id as permission_id,
+            permission.name,
+            permission.description,
+            permission.url,
+            permission.pid,
+            permission.method
+        FROM  t_sys_permission permission
+         LEFT JOIN t_sys_permission_role  permission_role
+        ON  permission.`id` = permission_role.`permission_id`
+        WHERE permission_role.role_id = #{roleId}
+    </select>
+
+</mapper>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.space.sbsecurity.mapper.sys.SysUserMapper" >
+
+    <resultMap id="BaseResultMap" type="com.space.sbsecurity.bo.sys.SysUser" >
+        <id column="user_id" property="id" jdbcType="BIGINT" />
+        <result column="username" property="username" jdbcType="VARCHAR" />
+        <result column="password" property="password" jdbcType="VARCHAR" />
+        <collection property="sysRoles" column="user_id"
+                    select="com.space.sbsecurity.mapper.sys.SysRoleMapper.selectRoleListByUserId">
+        </collection>
+    </resultMap>
+
+    <select id="findByUsername" resultMap="BaseResultMap">
+        SELECT
+            us.id as user_id,
+            us.username,
+            us.password
+        FROM t_sys_user us  WHERE us.username = #{username}
+    </select>
+
+</mapper>
