@@ -11,13 +11,13 @@ spring:
       username: root
       password: 123
   redis:
-    # redisÊı¾İ¿âË÷Òı£¨Ä¬ÈÏÎª0£©
+    # redisæ•°æ®åº“ç´¢å¼•ï¼ˆé»˜è®¤ä¸º0ï¼‰
     database: 0
     host: 127.0.0.1
     port: 6379
-    # redis·ÃÎÊÃÜÂë£¨Ä¬ÈÏÎª¿Õ£©
+    # redisè®¿é—®å¯†ç ï¼ˆé»˜è®¤ä¸ºç©ºï¼‰
     password:
-    # redisÁ¬½Ó³¬Ê±Ê±¼ä£¨µ¥Î»ÎªºÁÃë£©
+    # redisè¿æ¥è¶…æ—¶æ—¶é—´ï¼ˆå•ä½ä¸ºæ¯«ç§’ï¼‰
     timeout: 6000
   thymeleaf:
     cache: false
@@ -25,7 +25,7 @@ spring:
 mybatis:
   mapper-locations: classpath:mapper/**/*.xml
   type-aliases-package: com.space.sbsecurity.bo
-# securityÈÕÖ¾ÅäÖÃ
+# securityæ—¥å¿—é…ç½®
 logging:
   level:
     org.springframework.security: debug
